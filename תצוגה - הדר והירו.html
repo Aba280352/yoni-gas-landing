@@ -392,6 +392,7 @@
   .lead-ok p{margin-top:8px;font-size:17px;color:rgba(14,22,36,.75)}
   .lead-card.sent .lead-form,.lead-card.sent .lead-note,.lead-card.sent > h3,.lead-card.sent > p{display:none}
   .lead-card.sent .lead-ok{display:block}
+  .lead-again{display:inline-block;margin-top:16px;font-size:17px;font-weight:700;color:var(--brand);text-decoration:underline;text-underline-offset:4px}
   .foot-cols{margin-top:96px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:15px;row-gap:40px}
   .foot-brand{grid-column:1 / span 4}
   .foot-brand p{margin-top:16px;max-width:320px;font-size:16px;line-height:1.6;color:var(--on-dark)}
@@ -1112,10 +1113,10 @@
             <option>חידוש תשתית</option>
             <option>משהו אחר</option>
           </select></label>
-          <button class="btn btn-gas" type="submit">שלחו ויוני יחזור אליכם<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.446,3.063,5.333,6.341a3.08,3.08,0,0,0,.042,5.987l4.078.96a.3.3,0,0,0,.281-.08L14.472,8.47a.75.75,0,0,1,1.061,1.06l-4.74,4.74a.3.3,0,0,0-.08.281l.959,4.074a3.08,3.08,0,0,0,5.987.042L20.937,5.554A2.054,2.054,0,0,0,18.446,3.063Z"/></svg></button>
+          <button class="btn btn-gas" type="submit">שלחו ליוני בוואטסאפ<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12,3C7.03,3,3,7.03,3,12c0,1.67.46,3.24,1.26,4.59l-1.26,4.41,4.41-1.26c1.35.8,2.92,1.26,4.59,1.26,4.97,0,9-4.03,9-9S16.97,3,12,3Zm4.825,12.442c-.21.585-1.212,1.129-1.662,1.179-.451.051-.872.212-2.955-.614-2.504-.998-4.086-3.578-4.206-3.739-.12-.161-1.002-1.34-1.002-2.559s.631-1.814.861-2.066c.23-.252.5-.312.661-.312.17,0,.33,0,.481.01.17,0,.371.01.551.423.22.494.691,1.713.751,1.824.06.12.1.272.02.433-.091.161-.13.272-.25.413-.12.141-.261.323-.371.433-.13.121-.25.252-.11.504.151.242.641,1.058,1.372,1.713.942.847,1.733,1.109,1.983,1.229.24.121.39.101.531-.06.15-.161.621-.715.781-.967.16-.242.321-.202.551-.121.231.081,1.432.685,1.683.806.24.131.411.191.471.292.06.101.06.605-.14,1.179Z"/></svg></button>
         </form>
-        <p class="lead-note">הפרטים משמשים רק כדי לחזור אליכם.</p>
-        <div class="lead-ok" role="status" aria-live="polite"><svg width="56" height="56" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm4.03,8.2-4.67,4.66a.71.71,0,0,1-.53.22.742.742,0,0,1-.53-.22L7.97,12.53a.75.75,0,0,1,1.06-1.06l1.8,1.8,4.14-4.13a.737.737,0,0,1,1.06,0A.754.754,0,0,1,16.03,10.2Z"/></svg><b>תודה, קיבלנו!</b><p>יוני יחזור אליכם בהקדם.</p></div>
+        <p class="lead-note">ייפתח וואטסאפ עם ההודעה מוכנה, רק ללחוץ שליחה.</p>
+        <div class="lead-ok" role="status" aria-live="polite"><svg width="56" height="56" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12,3C7.03,3,3,7.03,3,12c0,1.67.46,3.24,1.26,4.59l-1.26,4.41,4.41-1.26c1.35.8,2.92,1.26,4.59,1.26,4.97,0,9-4.03,9-9S16.97,3,12,3Zm4.825,12.442c-.21.585-1.212,1.129-1.662,1.179-.451.051-.872.212-2.955-.614-2.504-.998-4.086-3.578-4.206-3.739-.12-.161-1.002-1.34-1.002-2.559s.631-1.814.861-2.066c.23-.252.5-.312.661-.312.17,0,.33,0,.481.01.17,0,.371.01.551.423.22.494.691,1.713.751,1.824.06.12.1.272.02.433-.091.161-.13.272-.25.413-.12.141-.261.323-.371.433-.13.121-.25.252-.11.504.151.242.641,1.058,1.372,1.713.942.847,1.733,1.109,1.983,1.229.24.121.39.101.531-.06.15-.161.621-.715.781-.967.16-.242.321-.202.551-.121.231.081,1.432.685,1.683.806.24.131.411.191.471.292.06.101.06.605-.14,1.179Z"/></svg><b>כמעט סיימנו!</b><p>ההודעה עם הפרטים שלכם מחכה בוואטסאפ. לחצו שליחה, ויוני יחזור אליכם בהקדם.</p><a class="lead-again" id="leadAgain" href="#" target="_blank" rel="noopener">פתחו את וואטסאפ שוב</a></div>
       </div>
     </div>
 
@@ -1298,7 +1299,7 @@
     }));
   })();
 
-  // Lead form (preview only: validates and shows the thank-you state; the real submit is wired in Lovable)
+  // Lead form: validates, then opens WhatsApp to Yoni with the details as a ready message
   (() => {
     const form = document.getElementById("leadForm"), card = document.getElementById("leadCard");
     form.addEventListener("submit", (e) => {
@@ -1307,6 +1308,9 @@
       form.name.setCustomValidity(name ? "" : "נא למלא שם");
       form.phone.setCustomValidity(phone.length >= 9 ? "" : "נא למלא מספר טלפון תקין");
       if (!form.reportValidity()) return;
+      const msg = "היי יוני, השארתי פרטים באתר:\nשם: " + name + "\nטלפון: " + form.phone.value.trim() + "\nבמה צריך עזרה: " + form.service.value;
+      const url = "https://wa.me/972526223016?text=" + encodeURIComponent(msg);
+      const a = document.getElementById("leadAgain"); a.href = url; a.click();
       card.classList.add("sent");
     });
     form.querySelectorAll("input").forEach(i => i.addEventListener("input", () => i.setCustomValidity("")));

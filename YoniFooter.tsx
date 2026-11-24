@@ -4,15 +4,27 @@
  * Bottom: brand, page links, service areas, contact details, copyright and the accessibility-statement link.
  * Visual mirror of the footer in "תצוגה - הדר והירו.html".
  *
- * Lead form: validates name + phone, then shows a thank-you state. onSubmit is where Lovable wires the real
- * delivery (e.g. insert into a leads table and email Yoni); nothing is sent in this component yet.
+ * Lead form: validates name + phone, then opens WhatsApp to Yoni (wa.me) with the details as a ready message,
+ * and shows a "press send" state with a link to open WhatsApp again. No backend: the visitor sends it from WhatsApp.
  * Tokens and fonts: see YoniHero.tsx. GridLines: see YoniServices.tsx.
  */
 import { useState, type FormEvent } from "react";
 import { GridLines } from "./YoniServices";
 
 const PHONE_TEL = "tel:0526223016";
-const WA_LINK = "https://wa.me/972526223016?text=" + encodeURIComponent("היי יוני, הגעתי מהאתר ואשמח לפרטים על התקנת מחמם מים על גז");
+const WA_BASE = "https://wa.me/972526223016?text=";
+const WA_LINK = WA_BASE + encodeURIComponent("היי יוני, הגעתי מהאתר ואשמח לפרטים על התקנת מחמם מים על גז");
+
+/* Opens a link in a new tab from inside the submit gesture (window.open with noopener returns null, so use an anchor). */
+const openNewTab = (href: string) => {
+  const a = document.createElement("a");
+  a.href = href;
+  a.target = "_blank";
+  a.rel = "noopener";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+};
 
 const Svg = ({ d, className }: { d: string; className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
@@ -47,7 +59,7 @@ const field =
   "h-[60px] w-full rounded-xl border-0 bg-[#F1F4F9] px-[18px] text-right text-[17px] font-medium text-background outline-none placeholder:text-background/50 focus-visible:shadow-[0_0_0_2px_hsl(var(--brand))]";
 
 export default function YoniFooter() {
-  const [sent, setSent] = useState(false);
+  const [sentUrl, setSentUrl] = useState<string | null>(null);
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -57,8 +69,11 @@ export default function YoniFooter() {
     name.setCustomValidity(name.value.trim() ? "" : "נא למלא שם");
     phone.setCustomValidity(phone.value.replace(/[^0-9]/g, "").length >= 9 ? "" : "נא למלא מספר טלפון תקין");
     if (!form.reportValidity()) return;
-    // TODO (Lovable): save the lead and notify Yoni, then show the thank-you state.
-    setSent(true);
+    const service = (form.elements.namedItem("service") as HTMLSelectElement).value;
+    const msg = `היי יוני, השארתי פרטים באתר:\nשם: ${name.value.trim()}\nטלפון: ${phone.value.trim()}\nבמה צריך עזרה: ${service}`;
+    const url = WA_BASE + encodeURIComponent(msg);
+    openNewTab(url);
+    setSentUrl(url);
   };
 
   return (
@@ -100,11 +115,14 @@ export default function YoniFooter() {
           </div>
 
           <div className="mt-10 rounded-xl bg-[#FEFEFE] px-5 py-7 text-background min-[1025px]:col-start-8 min-[1025px]:col-end-13 min-[1025px]:mt-0 min-[1025px]:p-10">
-            {sent ? (
+            {sentUrl ? (
               <div role="status" aria-live="polite" className="py-8 text-center">
-                <Svg d={ICONS.check} className="mx-auto mb-4 h-14 w-14 text-brand" />
-                <b className="block font-head text-[32px] leading-[1.1]">תודה, קיבלנו!</b>
-                <p className="mt-2 text-[17px] text-background/75">יוני יחזור אליכם בהקדם.</p>
+                <Svg d={ICONS.whatsapp} className="mx-auto mb-4 h-14 w-14 text-brand" />
+                <b className="block font-head text-[32px] leading-[1.1]">כמעט סיימנו!</b>
+                <p className="mt-2 text-[17px] text-background/75">ההודעה עם הפרטים שלכם מחכה בוואטסאפ. לחצו שליחה, ויוני יחזור אליכם בהקדם.</p>
+                <a href={sentUrl} target="_blank" rel="noopener" className="mt-4 inline-block text-[17px] font-bold text-brand underline underline-offset-4">
+                  פתחו את וואטסאפ שוב
+                </a>
               </div>
             ) : (
               <>
@@ -128,11 +146,11 @@ export default function YoniFooter() {
                     </select>
                   </label>
                   <button type="submit" className={`${btnGas} mt-2 w-full`}>
-                    שלחו ויוני יחזור אליכם
-                    <Svg d={ICONS.send} className="h-6 w-6" />
+                    שלחו ליוני בוואטסאפ
+                    <Svg d={ICONS.whatsapp} className="h-6 w-6" />
                   </button>
                 </form>
-                <p className="mt-3 text-sm text-background/60">הפרטים משמשים רק כדי לחזור אליכם.</p>
+                <p className="mt-3 text-sm text-background/60">ייפתח וואטסאפ עם ההודעה מוכנה, רק ללחוץ שליחה.</p>
               </>
             )}
           </div>
