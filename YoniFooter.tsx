@@ -82,12 +82,12 @@ export default function YoniFooter() {
       <div className="relative z-[1] mx-auto w-full max-w-[1520px] px-5 min-[1025px]:px-[5vw]">
         <div className="min-[1025px]:grid min-[1025px]:grid-cols-12 min-[1025px]:items-center min-[1025px]:gap-x-[15px]">
           <div className="min-[1025px]:col-span-6">
-            <p className="mb-2 inline-block rounded-xl bg-brand px-4 py-2 text-base font-bold text-foreground">דברו עם יוני</p>
+            <p className="mb-2 inline-block rounded-xl bg-brand px-4 py-2 text-base font-bold text-foreground">דברו איתי</p>
             <h2 id="foot-title" className="text-balance font-head text-4xl font-bold leading-none min-[1025px]:text-[72px]">
-              צריכים מחמם מים על גז? <span className="text-primary">יוני כאן.</span>
+              צריכים מחמם מים על גז? <span className="text-primary">אני כאן.</span>
             </h2>
             <p className="mt-[15px] max-w-[480px] text-pretty text-[17px] leading-[1.6] text-foreground/90 min-[1025px]:mt-5 min-[1025px]:text-lg">
-              השאירו פרטים ויוני יחזור אליכם, או התקשרו עכשיו ודברו איתו ישירות. בלי מוקד ובלי מתווכים.
+              השאירו פרטים ואחזור אליכם, או התקשרו עכשיו ודברו איתי ישירות. בלי מוקד ובלי מתווכים.
             </p>
             <div className="mt-6 flex flex-col gap-3 min-[1025px]:mt-8 min-[1025px]:flex-row min-[1025px]:flex-wrap">
               <a href={PHONE_TEL} className={btnGas}>
@@ -119,7 +119,7 @@ export default function YoniFooter() {
               <div role="status" aria-live="polite" className="py-8 text-center">
                 <Svg d={ICONS.whatsapp} className="mx-auto mb-4 h-14 w-14 text-brand" />
                 <b className="block font-head text-[32px] leading-[1.1]">כמעט סיימנו!</b>
-                <p className="mt-2 text-[17px] text-background/75">ההודעה עם הפרטים שלכם מחכה בוואטסאפ. לחצו שליחה, ויוני יחזור אליכם בהקדם.</p>
+                <p className="mt-2 text-[17px] text-background/75">ההודעה עם הפרטים שלכם מחכה בוואטסאפ. לחצו שליחה, ואחזור אליכם בהקדם.</p>
                 <a href={sentUrl} target="_blank" rel="noopener" className="mt-4 inline-block text-[17px] font-bold text-brand underline underline-offset-4">
                   פתחו את וואטסאפ שוב
                 </a>
@@ -127,7 +127,7 @@ export default function YoniFooter() {
             ) : (
               <>
                 <h3 className="font-head text-[28px] font-bold leading-[1.05] min-[1025px]:text-4xl">השאירו פרטים</h3>
-                <p className="mt-2 text-[17px] leading-normal text-background/75">יוני יחזור אליכם בהקדם.</p>
+                <p className="mt-2 text-[17px] leading-normal text-background/75">אחזור אליכם בהקדם.</p>
                 <form noValidate onSubmit={onSubmit} className="mt-6 grid gap-3">
                   <label className="grid gap-1.5 text-[15px] font-bold">
                     שם מלא

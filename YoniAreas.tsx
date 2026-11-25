@@ -115,7 +115,7 @@ export default function YoniAreas() {
             חיפה, הקריות והצפון.
           </h2>
           <p className="mt-[15px] max-w-[560px] text-pretty text-lg leading-[1.6] text-foreground/90 min-[1025px]:mt-5">
-            יוני מגיע אליכם הביתה או לאתר העבודה, בכל האזורים האלה.
+            אני מגיע אליכם הביתה או לאתר העבודה, בכל האזורים האלה.
           </p>
         </header>
 
@@ -194,7 +194,7 @@ export default function YoniAreas() {
         </figure>
 
         <p className="mx-auto mt-2 max-w-[460px] text-pretty text-center text-[17px] leading-[1.6] text-foreground/90 min-[1025px]:text-lg">
-          לא בטוחים אם אתם באזור? תתקשרו, ויוני יגיד לכם מיד.
+          לא בטוחים אם אתם באזור? תתקשרו, ואגיד לכם מיד.
         </p>
         <div className="mt-7 flex flex-col justify-center gap-3 min-[1025px]:flex-row min-[1025px]:flex-wrap">
           <a

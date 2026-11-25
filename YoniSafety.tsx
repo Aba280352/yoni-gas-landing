@@ -75,7 +75,7 @@ export default function YoniSafety() {
             בגז, בטיחות קודם כל.
           </h2>
           <p className="col-start-7 col-end-13 mt-[15px] text-pretty text-lg leading-[1.6] min-[1025px]:mt-0 min-[1025px]:max-w-[460px] min-[1025px]:ps-6">
-            בכל התקנה, גדולה או קטנה, יוני עובר על אותן בדיקות לפני שהוא מסיים את העבודה.
+            בכל התקנה, גדולה או קטנה, אני עובר על אותן בדיקות לפני שאני מסיים את העבודה.
           </p>
         </header>
 
@@ -113,7 +113,7 @@ export default function YoniSafety() {
             <Svg d={ICONS.shield} className="mb-auto h-[72px] w-[72px] text-brand-light" />
             <h3 className="mt-7 text-balance font-head text-4xl font-bold leading-none min-[1025px]:mt-10 min-[1025px]:text-[56px]">אחריות על העבודה.</h3>
             <p className="mt-4 max-w-[420px] text-pretty text-[17px] leading-[1.55] text-foreground/90 min-[1025px]:text-[19px]">
-              כל התקנה מגיעה עם אחריות. ואם עולה שאלה גם אחרי, מתקשרים ישר ליוני.
+              כל התקנה מגיעה עם אחריות. ואם עולה שאלה גם אחרי, מתקשרים ישר אליי.
             </p>
             <a
               href={PHONE_TEL}

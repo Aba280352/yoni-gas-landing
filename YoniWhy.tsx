@@ -37,7 +37,7 @@ const CARDS = [
   { icon: ICONS.certificate, title: "רישיון משרד האנרגיה", text: 'טכנאי גז מוסמך, מתקין גפ"מ רמה 1.' },
   { icon: ICONS.calendar, title: "5 שנות ניסיון", text: "התקנות גז בבתים ובפרויקטים, בחיפה, בקריות ובצפון." },
   { icon: ICONS.shield, title: "אחריות על העבודה", text: "עבודה לפי התקן, עם אחריות על ההתקנה." },
-  { icon: ICONS.user, title: "יחס אישי", text: "מדברים ישירות עם יוני, מהשיחה הראשונה ועד סוף העבודה." },
+  { icon: ICONS.user, title: "יחס אישי", text: "מדברים ישירות איתי, מהשיחה הראשונה ועד סוף העבודה." },
 ];
 
 const easeOut = "ease-[cubic-bezier(.22,1,.36,1)]";

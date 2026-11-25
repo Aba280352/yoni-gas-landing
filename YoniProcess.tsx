@@ -35,9 +35,9 @@ const Svg = ({ d, className }: { d: string; className?: string }) => (
 );
 
 const STEPS = [
-  { icon: ICONS.phone, title: "שיחה עם יוני", text: "מתקשרים, מספרים מה צריך ומקבלים הסבר ישיר." },
+  { icon: ICONS.phone, title: "שיחה איתי", text: "מתקשרים, מספרים מה צריך ומקבלים הסבר ישיר." },
   { icon: ICONS.calendar, title: "קביעת עבודה", text: "מתאמים מועד להגעה ולביצוע העבודה." },
-  { icon: ICONS.tool, title: "ביצוע ותשלום", text: "יוני מבצע את העבודה לפי התקן, והתשלום בסיום." },
+  { icon: ICONS.tool, title: "ביצוע ותשלום", text: "אני מבצע את העבודה לפי התקן, והתשלום בסיום." },
 ];
 
 const clamp = (v: number) => Math.min(1, Math.max(0, v));
@@ -138,7 +138,7 @@ export default function YoniProcess() {
             שלושה שלבים פשוטים.
           </h2>
           <p className="mt-[15px] text-pretty text-lg leading-[1.6] text-foreground/90 min-[1025px]:mt-5 min-[1025px]:max-w-[560px]">
-            מהשיחה הראשונה ועד שהעבודה גמורה, אתם מדברים עם יוני.
+            מהשיחה הראשונה ועד שהעבודה גמורה, אתם מדברים ישירות איתי.
           </p>
         </header>
 

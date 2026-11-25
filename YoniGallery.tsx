@@ -82,7 +82,7 @@ export default function YoniGallery() {
             עבודות אמיתיות, מהשטח.
           </h2>
           <p className="col-start-7 col-end-13 mt-[15px] text-pretty text-lg leading-[1.6] min-[1025px]:mt-0 min-[1025px]:max-w-[460px] min-[1025px]:ps-6">
-            כל התמונות כאן מעבודות שיוני ביצע בעצמו: מחממי מים, תשתיות ונקודות גז.
+            כל התמונות כאן מעבודות שביצעתי בעצמי: מחממי מים, תשתיות ונקודות גז.
           </p>
         </header>
 
