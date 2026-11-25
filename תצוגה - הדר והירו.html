@@ -528,7 +528,7 @@
     .svc-head p{margin-top:15px;padding-inline-start:0;max-width:none}
     .svc{flex-direction:column;height:auto;gap:12px}
     .svc-item{flex:none;height:112px;transition:height .6s var(--ease-io)}
-    .svc-item.is-active{height:520px}
+    .svc-item.is-active{height:460px}
     .svc-body{padding:22px 20px}
     .svc-num{font-size:22px;margin-bottom:6px}
     .svc-title{font-size:24px}
@@ -1384,7 +1384,19 @@
 
   // Services accordion: hover (fine pointer), tap or keyboard focus opens a card
   const items = [...document.querySelectorAll(".svc-item")];
-  const activate = (el) => items.forEach(i => { const on = i === el; i.classList.toggle("is-active", on); i.setAttribute("aria-expanded", on); });
+  const mob = window.matchMedia("(max-width: 1024px)"), still = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const activate = (el) => {
+    const prev = items.find(i => i.classList.contains("is-active"));
+    if (prev === el) return;
+    // Mobile: bring the opening card's top just under the sticky header (80px + 12px), so the whole card shows.
+    // A card above that collapses shrinks to 112px, so subtract that shift from the target in advance.
+    if (mob.matches) {
+      const shift = prev && items.indexOf(prev) < items.indexOf(el) ? prev.offsetHeight - 112 : 0;
+      const top = el.getBoundingClientRect().top + window.scrollY - shift - 92;
+      window.scrollTo({ top, behavior: still.matches ? "auto" : "smooth" });
+    }
+    items.forEach(i => { const on = i === el; i.classList.toggle("is-active", on); i.setAttribute("aria-expanded", on); });
+  };
   const fine = window.matchMedia("(hover: hover) and (pointer: fine)");
   items.forEach(el => {
     el.addEventListener("mouseenter", () => { if (fine.matches) activate(el); });

@@ -2,13 +2,14 @@
  * YoniServices: "אז במה אני יכול לעזור?" – 4 services as a horizontal accordion on a strict grid.
  * Visual mirror of the services section in "תצוגה - הדר והירו.html".
  * Desktop: the active card widens (flex-grow 1 → 3.2); hover (fine pointer), tap or focus opens a card.
- * Mobile (≤1024): vertical stack, collapsed strips 112px, active card 520px.
+ * Mobile (≤1024): vertical stack, collapsed strips 112px, active card 460px. Opening a card scrolls it to just
+ * under the sticky header (80px + 12px), so the whole card is visible.
  * CTA in every card is a phone call: Yoni's preferred contact in the questionnaire ("action: שיחת טלפון").
  *
  * Assets (/public/work): svc-heater.jpg, svc-infra.jpg, svc-points.jpg, svc-renew.jpg
  * Tokens and fonts: see YoniHero.tsx.
  */
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -76,6 +77,25 @@ const easeOut = "ease-[cubic-bezier(.22,1,.36,1)]";
 
 export default function YoniServices() {
   const [active, setActive] = useState(0);
+  const listRef = useRef<HTMLUListElement>(null);
+  const prevRef = useRef(0);
+
+  // Mobile: bring the opening card's top just under the sticky header, so the whole card shows.
+  // Runs right after the class change, before the height transition moves anything: a card above that
+  // collapses will shrink to 112px, so that shift is subtracted from the target in advance.
+  useEffect(() => {
+    const prev = prevRef.current;
+    prevRef.current = active;
+    if (prev === active || !window.matchMedia("(max-width: 1024px)").matches) return;
+    const items = listRef.current?.children;
+    const el = items?.[active] as HTMLElement | undefined;
+    const prevEl = items?.[prev] as HTMLElement | undefined;
+    if (!el) return;
+    const shift = prevEl && prev < active ? prevEl.offsetHeight - 112 : 0;
+    const top = el.getBoundingClientRect().top + window.scrollY - shift - 92;
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top, behavior: still ? "auto" : "smooth" });
+  }, [active]);
 
   const hoverOpen = (i: number) => {
     if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) setActive(i);
@@ -100,7 +120,7 @@ export default function YoniServices() {
           </p>
         </header>
 
-        <ul className="flex flex-col gap-3 min-[1025px]:h-[620px] min-[1025px]:flex-row min-[1025px]:gap-[15px]">
+        <ul ref={listRef} className="flex flex-col gap-3 min-[1025px]:h-[620px] min-[1025px]:flex-row min-[1025px]:gap-[15px]">
           {SERVICES.map((s, i) => {
             const on = i === active;
             return (
@@ -115,7 +135,7 @@ export default function YoniServices() {
                   "group relative min-w-0 overflow-hidden rounded-xl outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-background",
                   "transition-[height,flex-grow] duration-[600ms] motion-reduce:transition-none",
                   easeIO,
-                  on ? "h-[520px] cursor-default min-[1025px]:grow-[3.2]" : "h-28 cursor-pointer min-[1025px]:grow",
+                  on ? "h-[460px] cursor-default min-[1025px]:grow-[3.2]" : "h-28 cursor-pointer min-[1025px]:grow",
                   "min-[1025px]:h-auto min-[1025px]:basis-0",
                 )}
               >
