@@ -307,7 +307,7 @@
     .area-sec{padding:84px 0}
     .area-sec .svc-head{margin-bottom:32px}
     .area-sec .svc-head p:not(.k){margin-top:15px}
-    .area-map{-webkit-mask-image:linear-gradient(to bottom,#000 70%,transparent 98%);-webkit-mask-composite:source-over;mask-image:linear-gradient(to bottom,#000 70%,transparent 98%);mask-composite:add}
+    .area-map{margin-inline:-20px;-webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);-webkit-mask-composite:source-over;mask-image:linear-gradient(to bottom,#000 84%,transparent 100%);mask-composite:add}
     .am-pt text{font-size:32px}
     .am-sea{display:none}
     .area-note{font-size:17px}
@@ -1267,7 +1267,7 @@
     const map = document.querySelector(".area-map");
     const pts = [...map.querySelectorAll(".am-pt")];
     const svg = map.querySelector("svg"), mob = matchMedia("(max-width:1024px)");
-    const layout = () => { svg.setAttribute("viewBox", mob.matches ? "262 60 830 790" : "-130 62 1570 768"); pts.forEach(p => {
+    const layout = () => { svg.setAttribute("viewBox", mob.matches ? "235 70 775 860" : "-130 62 1570 768"); pts.forEach(p => {
       const x = +p.dataset.x, y = +p.dataset.y, side = p.dataset.side;
       const rect = p.querySelector("rect"), text = p.querySelector("text");
       const fsz = parseFloat(getComputedStyle(text).fontSize), h = fsz * 1.85, w = text.getBBox().width + fsz * 1.3;

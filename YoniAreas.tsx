@@ -6,7 +6,7 @@
  * Map: smoothed outline of northern Israel incl. the Golan and the Metula finger (x = (lon − 34.6) × 838, y = (33.4 − lat) × 1000),
  * soft blue land gradient, the Kinneret, a yellow glow around Haifa (home base, yellow pin), fading out at the bottom.
  * Pins drop in once (50ms stagger). Hover (fine pointer) or tap a pin to light it up; Haifa by default.
- * Chips are sized to their text after the font loads. Mobile crops the sea so the labels stay readable.
+ * Chips are sized to their text after the font loads. Mobile crops the sea and most of the Golan and bleeds edge to edge, so the map is taller and the labels larger.
  * The map is aria-hidden; a visually hidden list carries the town names.
  * Towns: the questionnaire says חיפה, הקריות, משגב and "הצפון"; the other towns spell out "הצפון" (Yoni to approve).
  *
@@ -128,9 +128,9 @@ export default function YoniAreas() {
         <figure
           ref={mapRef}
           aria-hidden="true"
-          className="relative mx-auto max-w-[1100px] [mask-image:linear-gradient(to_bottom,#000_70%,transparent_98%)] min-[1025px]:[mask-composite:intersect] min-[1025px]:[mask-image:linear-gradient(to_right,transparent_0%,#000_22%,#000_78%,transparent_100%),linear-gradient(to_bottom,#000_74%,transparent_100%)]"
+          className="relative -mx-5 max-w-[1100px] [mask-image:linear-gradient(to_bottom,#000_84%,transparent_100%)] min-[1025px]:mx-auto min-[1025px]:[mask-composite:intersect] min-[1025px]:[mask-image:linear-gradient(to_right,transparent_0%,#000_22%,#000_78%,transparent_100%),linear-gradient(to_bottom,#000_74%,transparent_100%)]"
         >
-          <svg viewBox={mob ? "262 60 830 790" : "-130 62 1570 768"} className="block h-auto w-full overflow-visible">
+          <svg viewBox={mob ? "235 70 775 860" : "-130 62 1570 768"} className="block h-auto w-full overflow-visible">
             <defs>
               <linearGradient id="amLand" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0" stopColor="#9DB4EC" stopOpacity=".16" />
